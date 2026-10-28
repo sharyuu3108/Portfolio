@@ -1,0 +1,85 @@
+// Animation keyframes and motion preferences
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes signalPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(240, 68, 82, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(240, 68, 82, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(240, 68, 82, 0);
+  }
+}
+
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(1000%);
+  }
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes shimmerText {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+// Scroll-driven entry keyframes
+@keyframes scrollEntry {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Journey Beacon keyframes
+@keyframes journeyBeaconGlow {
+  0%, 100% {
+    box-shadow: 0 0 8px rgba(240, 68, 82, 0.4), 0 0 20px rgba(53, 215, 242, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 16px rgba(240, 68, 82, 0.7), 0 0 35px rgba(53, 215, 242, 0.4);
+  }
+}
+
+// Reduced Motion rules
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001s !important;
+    scroll-behavior: auto !important;
+  }
+}

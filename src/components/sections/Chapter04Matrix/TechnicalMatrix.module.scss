@@ -1,0 +1,260 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.matrixSection {
+  padding: $section-spacing-desktop 0;
+  position: relative;
+  z-index: 1;
+
+  @include tablet {
+    padding: $section-spacing-tablet 0;
+  }
+}
+
+.container {
+  @include container;
+}
+
+// Controls Bar
+.controlsBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.categoryPills {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.pillBtn {
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: 9999px;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid $color-border-subtle;
+  color: $color-steel;
+  transition: all $transition-fast;
+
+  &:hover {
+    color: $color-white;
+    border-color: $color-border-medium;
+  }
+
+  &.active {
+    background-color: rgba(240, 68, 82, 0.15);
+    border-color: rgba(240, 68, 82, 0.4);
+    color: $color-crimson;
+    font-weight: 600;
+  }
+}
+
+.searchWrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 300px;
+
+  @include mobile {
+    width: 100%;
+  }
+
+  .searchIcon {
+    position: absolute;
+    left: 0.9rem;
+    color: $color-muted;
+    pointer-events: none;
+  }
+
+  .searchInput {
+    width: 100%;
+    background-color: $color-carbon;
+    border: 1px solid $color-border-medium;
+    border-radius: 6px;
+    padding: 0.55rem 2rem 0.55rem 2.25rem;
+    font-family: $font-sans;
+    font-size: 0.82rem;
+    color: $color-white;
+    outline: none;
+    transition: border-color $transition-fast;
+
+    &::placeholder {
+      color: $color-muted;
+    }
+
+    &:focus {
+      border-color: $color-crimson;
+      box-shadow: 0 0 10px rgba(240, 68, 82, 0.2);
+    }
+  }
+
+  .clearBtn {
+    position: absolute;
+    right: 0.75rem;
+    color: $color-muted;
+    font-size: 1.1rem;
+    line-height: 1;
+
+    &:hover {
+      color: $color-white;
+    }
+  }
+}
+
+// Matrix Grid
+.matrixGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+
+  @include laptop {
+    grid-template-columns: 1fr;
+  }
+}
+
+.groupCard {
+  background-color: $color-carbon;
+  border: 1px solid $color-border-subtle;
+  border-radius: 12px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  transition: border-color $transition-fast;
+
+  &:hover {
+    border-color: $color-border-medium;
+  }
+
+  @include mobile {
+    padding: 1.5rem;
+  }
+}
+
+.groupHead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid $color-border-subtle;
+  gap: 1rem;
+
+  .groupTitle {
+    font-size: 1.25rem;
+    color: $color-white;
+    margin-bottom: 0.25rem;
+  }
+
+  .groupDesc {
+    font-size: 0.85rem;
+    color: $color-steel;
+  }
+
+  .countBadge {
+    font-family: $font-mono;
+    font-size: 0.68rem;
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid $color-border-subtle;
+    padding: 0.2rem 0.55rem;
+    border-radius: 4px;
+    color: $color-muted;
+    flex-shrink: 0;
+  }
+}
+
+.compactSkillsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.compactSkillPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 6px;
+  padding: 0.35rem 0.65rem;
+  font-size: 0.82rem;
+  color: $color-steel;
+  transition: all $transition-fast;
+  cursor: default;
+
+  .skillDot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: $color-muted;
+    transition: background-color $transition-fast;
+  }
+
+  .skillName {
+    font-weight: 500;
+    color: $color-white;
+  }
+
+  .coreTag {
+    font-family: $font-mono;
+    font-size: 0.58rem;
+    color: $color-crimson;
+    background: rgba(240, 68, 82, 0.12);
+    border: 1px solid rgba(240, 68, 82, 0.25);
+    padding: 0.05rem 0.3rem;
+    border-radius: 3px;
+    font-weight: 600;
+  }
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
+
+    .skillDot {
+      background-color: $color-cyan;
+    }
+  }
+
+  &.highlighted {
+    border-color: rgba(240, 68, 82, 0.3);
+    background-color: rgba(240, 68, 82, 0.04);
+
+    .skillDot {
+      background-color: $color-crimson;
+    }
+  }
+}
+
+.noResults {
+  text-align: center;
+  padding: 4rem 1rem;
+  background-color: $color-carbon;
+  border: 1px solid $color-border-subtle;
+  border-radius: 12px;
+
+  p {
+    font-size: 1rem;
+    color: $color-steel;
+    margin-bottom: 1rem;
+  }
+
+  .resetBtn {
+    font-family: $font-mono;
+    font-size: 0.82rem;
+    color: $color-crimson;
+    background-color: rgba(240, 68, 82, 0.1);
+    border: 1px solid rgba(240, 68, 82, 0.3);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+
+    &:hover {
+      background-color: rgba(240, 68, 82, 0.2);
+    }
+  }
+}

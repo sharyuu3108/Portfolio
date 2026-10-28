@@ -1,0 +1,1072 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.machineSection {
+  padding: $section-spacing-desktop 0;
+  position: relative;
+  z-index: 1;
+
+  @include tablet {
+    padding: $section-spacing-tablet 0;
+  }
+}
+
+.container {
+  @include container;
+}
+
+// Side-by-Side Featured Projects Grid
+.sideBySideGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-bottom: 3.5rem;
+  align-items: stretch;
+
+  @include laptop {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+.caseStudyCard {
+  background-color: $color-carbon;
+  border: 1px solid $color-border-subtle;
+  border-radius: 14px;
+  padding: 2.25rem 2rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  transition: border-color $transition-fast, transform $transition-fast;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &:hover {
+    border-color: $color-border-medium;
+  }
+
+  @include tablet {
+    padding: 1.5rem;
+  }
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.badgeRow {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.cardTitleBlock {
+  margin-bottom: 1.25rem;
+
+  .projectTitle {
+    font-size: clamp(1.6rem, 2.4vw, 2.1rem);
+    letter-spacing: -0.03em;
+    color: $color-white;
+    line-height: 1.15;
+    margin-bottom: 0.35rem;
+  }
+
+  .projectSubtitle {
+    font-family: $font-sans;
+    font-size: 0.95rem;
+    color: $color-steel;
+  }
+}
+
+.cardVisual {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  flex-grow: 1;
+}
+
+.compactOverview {
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: $color-steel;
+
+  strong {
+    color: $color-white;
+  }
+}
+
+.compactHighlights {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  background-color: rgba(0, 0, 0, 0.25);
+  border: 1px solid $color-border-subtle;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+}
+
+.highlightRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: $color-steel;
+
+  .checkIcon {
+    color: $color-crimson;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+}
+
+.dualBlock {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.subBlock {
+  background-color: rgba(0, 0, 0, 0.25);
+  border: 1px solid $color-border-subtle;
+  border-radius: 8px;
+  padding: 1.25rem;
+
+  .subTitle {
+    font-family: $font-mono;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    color: $color-white;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: $color-steel;
+  }
+}
+
+.highlightsBlock {
+  .subTitle {
+    font-family: $font-mono;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    color: $color-white;
+    margin-bottom: 0.85rem;
+  }
+}
+
+.highlightsList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+
+  li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: $color-steel;
+
+    .checkIcon {
+      color: $color-crimson;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+  }
+}
+
+.techTagsRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid $color-border-subtle;
+}
+
+.techPill {
+  @include tech-tag;
+  background-color: rgba(255, 255, 255, 0.03);
+
+  &:hover {
+    color: $color-white;
+    border-color: $color-crimson;
+  }
+}
+
+// Right Visual & Interactive Console
+.caseVisual {
+  width: 100%;
+}
+
+.interactiveConsole {
+  background-color: #0b0d12;
+  border: 1px solid $color-border-medium;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+}
+
+.consoleHead {
+  background-color: $color-surface-elevated;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid $color-border-subtle;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.windowControls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  span[class^="dot"] {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+  }
+
+  .dotRed { background-color: #ff5f56; }
+  .dotYellow { background-color: #ffbd2e; }
+  .dotGreen { background-color: #27c93f; }
+
+  .consoleFilename {
+    font-family: $font-mono;
+    font-size: 0.72rem;
+    color: $color-steel;
+    margin-left: 0.6rem;
+  }
+}
+
+.headActions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.modeTabs {
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 6px;
+  padding: 2px;
+  border: 1px solid $color-border-subtle;
+}
+
+.modeBtn {
+  font-family: $font-mono;
+  font-size: 0.72rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 4px;
+  color: $color-steel;
+  transition: all $transition-fast;
+
+  &.active {
+    background-color: $color-surface-elevated;
+    color: $color-white;
+    font-weight: 600;
+  }
+}
+
+.langSelector {
+  display: flex;
+  gap: 3px;
+}
+
+.langBtn {
+  font-family: $font-mono;
+  font-size: 0.7rem;
+  padding: 0.25rem 0.55rem;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.04);
+  color: $color-steel;
+
+  &.active {
+    background-color: rgba(240, 68, 82, 0.15);
+    color: $color-crimson;
+    border: 1px solid rgba(240, 68, 82, 0.3);
+  }
+}
+
+.runBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background-color: $color-crimson;
+  color: $color-white;
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.35rem 0.85rem;
+  border-radius: 5px;
+  transition: background-color $transition-fast;
+
+  &:hover:not(:disabled) {
+    background-color: $color-crimson-hover;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: wait;
+  }
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+
+.consoleViewNav {
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.45);
+  border-bottom: 1px solid $color-border-subtle;
+  overflow-x: auto;
+}
+
+.viewNavBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 0.95rem;
+  font-family: $font-mono;
+  font-size: 0.72rem;
+  color: $color-steel;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all $transition-fast;
+  border-bottom: 2px solid transparent;
+
+  &:hover {
+    color: $color-white;
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  &.active {
+    color: $color-white;
+    background: rgba(240, 68, 82, 0.08);
+    border-bottom-color: $color-crimson;
+    font-weight: 600;
+  }
+}
+
+.activePulseDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: $color-cyan;
+  box-shadow: 0 0 6px rgba(53, 215, 242, 0.7);
+  display: inline-block;
+  margin-left: 2px;
+}
+
+.compactConsoleBody {
+  min-height: 220px;
+  max-height: 280px;
+  overflow-y: auto;
+  background-color: #0d0f14;
+}
+
+.consoleBody {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 310px;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.editorPanel {
+  border-right: 1px solid $color-border-subtle;
+  background-color: #0d0f14;
+  display: flex;
+  flex-direction: column;
+}
+
+.outputPanel {
+  background-color: #0b0d11;
+  display: flex;
+  flex-direction: column;
+}
+
+.panelTitleBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0.85rem;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid $color-border-subtle;
+}
+
+.panelLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: $font-mono;
+  font-size: 0.68rem;
+  color: $color-muted;
+  letter-spacing: 0.06em;
+}
+
+.engineTag, .statusLive {
+  font-family: $font-mono;
+  font-size: 0.64rem;
+  color: $color-cyan;
+  background-color: rgba(53, 215, 242, 0.08);
+  padding: 0.15rem 0.45rem;
+  border-radius: 3px;
+}
+
+.codeView {
+  padding: 1.25rem 1rem;
+  font-family: $font-mono;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: #cfd3dc;
+  overflow-x: auto;
+  flex-grow: 1;
+}
+
+.emptyState, .loadingState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  flex-grow: 1;
+  gap: 0.75rem;
+
+  p {
+    font-size: 0.84rem;
+    color: $color-muted;
+    max-width: 280px;
+    line-height: 1.5;
+  }
+
+  .emptyIcon {
+    color: $color-muted;
+  }
+
+  .spinIcon {
+    color: $color-crimson;
+    animation: spin 1.2s linear infinite;
+  }
+
+  span {
+    font-family: $font-mono;
+    font-size: 0.8rem;
+    color: $color-white;
+  }
+}
+
+.reviewContent {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.summaryBox {
+  background-color: rgba(240, 68, 82, 0.06);
+  border: 1px solid rgba(240, 68, 82, 0.2);
+  border-radius: 6px;
+  padding: 0.75rem 0.85rem;
+
+  .summaryLabel {
+    display: block;
+    font-family: $font-mono;
+    font-size: 0.65rem;
+    color: $color-crimson;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.35rem;
+    font-weight: 600;
+  }
+
+  p {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: #e5e8ef;
+  }
+}
+
+.issueList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.issueItem {
+  background-color: rgba(255, 255, 255, 0.02);
+  border-left: 3px solid;
+  border-radius: 4px;
+  padding: 0.6rem 0.75rem;
+
+  &.warning {
+    border-color: #ffbd2e;
+  }
+  &.error {
+    border-color: #ff5f56;
+  }
+  &.optimization {
+    border-color: $color-cyan;
+  }
+}
+
+.issueHead {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 0.25rem;
+}
+
+.issueBadge {
+  font-family: $font-mono;
+  font-size: 0.62rem;
+  background-color: rgba(255, 255, 255, 0.08);
+  padding: 0.1rem 0.35rem;
+  border-radius: 2px;
+  color: $color-white;
+}
+
+.issueTitle {
+  font-size: 0.78rem;
+  color: $color-white;
+}
+
+.issueDesc {
+  font-size: 0.74rem;
+  color: $color-steel;
+  line-height: 1.45;
+}
+
+.optimizedContent {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.optSummary {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: $font-mono;
+  font-size: 0.74rem;
+  color: #35d7a0;
+
+  .checkIcon {
+    color: #35d7a0;
+  }
+}
+
+.codeViewResult {
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 1px solid $color-border-subtle;
+  border-radius: 6px;
+  padding: 1rem;
+  font-family: $font-mono;
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: #bbf3fa;
+  overflow-x: auto;
+}
+
+.consoleFoot {
+  background-color: $color-surface-elevated;
+  padding: 0.6rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid $color-border-subtle;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.footMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: $font-mono;
+  font-size: 0.68rem;
+  color: $color-muted;
+
+  .shield {
+    color: $color-crimson;
+  }
+}
+
+.footTag {
+  font-family: $font-mono;
+  font-size: 0.64rem;
+  color: $color-steel;
+}
+
+// ==========================================
+// Cerebro Preview Styling
+// ==========================================
+.cerebroDashboard {
+  background-color: #0e1117;
+  border: 1px solid $color-border-medium;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+}
+
+.cerebroHeader {
+  background-color: $color-surface-elevated;
+  padding: 0.85rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid $color-border-subtle;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.brandGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+
+  .logoBadge {
+    background-color: $color-crimson;
+    color: $color-white;
+    font-family: $font-display;
+    font-weight: 700;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.45rem;
+    border-radius: 4px;
+  }
+
+  .appName {
+    font-family: $font-display;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: $color-white;
+  }
+
+  .appSub {
+    display: block;
+    font-family: $font-mono;
+    font-size: 0.65rem;
+    color: $color-muted;
+  }
+}
+
+.authStatus {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: $font-mono;
+  font-size: 0.7rem;
+  color: $color-cyan;
+
+  .authLock, .dbIcon {
+    color: $color-crimson;
+  }
+}
+
+.moduleNav {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background-color: rgba(0, 0, 0, 0.35);
+  border-bottom: 1px solid $color-border-subtle;
+
+  @include mobile {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.moduleTab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.7rem 0.5rem;
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  color: $color-steel;
+  transition: all $transition-fast;
+  border-bottom: 2px solid transparent;
+
+  &:hover {
+    color: $color-white;
+    background-color: rgba(255, 255, 255, 0.02);
+  }
+
+  &.active {
+    color: $color-white;
+    background-color: rgba(240, 68, 82, 0.08);
+    border-bottom-color: $color-crimson;
+  }
+}
+
+.moduleDisplay {
+  padding: 1.5rem;
+}
+
+.moduleMeta {
+  margin-bottom: 1.25rem;
+
+  .modTitle {
+    font-size: 1.15rem;
+    color: $color-white;
+    margin-bottom: 0.35rem;
+  }
+
+  .modDesc {
+    font-size: 0.85rem;
+    color: $color-steel;
+    line-height: 1.55;
+  }
+}
+
+.moduleCanvas {
+  background-color: rgba(0, 0, 0, 0.25);
+  border: 1px solid $color-border-subtle;
+  border-radius: 8px;
+  padding: 1.25rem;
+  min-height: 190px;
+}
+
+// Career Card
+.careerCard {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  .careerHead {
+    h4 {
+      font-size: 1.2rem;
+      color: $color-white;
+      margin: 0.25rem 0;
+    }
+    .careerBadge {
+      font-family: $font-mono;
+      font-size: 0.65rem;
+      color: $color-crimson;
+      letter-spacing: 0.08em;
+      font-weight: 600;
+    }
+    .domainText {
+      font-size: 0.85rem;
+      color: $color-steel;
+    }
+  }
+
+  .prereqList {
+    .prereqTitle {
+      display: block;
+      font-family: $font-mono;
+      font-size: 0.68rem;
+      color: $color-muted;
+      margin-bottom: 0.5rem;
+    }
+
+    ul {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+
+      @include mobile {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.82rem;
+      color: $color-white;
+
+      .arrowIcon {
+        color: $color-cyan;
+        flex-shrink: 0;
+      }
+    }
+  }
+}
+
+// Roadmap Grid
+.roadmapGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.roadmapNode {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: rgba(255, 255, 255, 0.02);
+  border: 1px solid $color-border-subtle;
+  border-radius: 6px;
+  padding: 0.65rem 0.85rem;
+
+  .nodeIcon {
+    color: $color-muted;
+    flex-shrink: 0;
+  }
+
+  &.completed {
+    border-color: rgba(53, 215, 242, 0.3);
+    background-color: rgba(53, 215, 242, 0.04);
+
+    .nodeIcon {
+      color: $color-cyan;
+    }
+  }
+
+  .nodeContent {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-grow: 1;
+    flex-wrap: wrap;
+
+    .phaseLabel {
+      font-family: $font-mono;
+      font-size: 0.68rem;
+      color: $color-muted;
+      min-width: 130px;
+    }
+
+    .taskLabel {
+      font-size: 0.85rem;
+      color: $color-white;
+      flex-grow: 1;
+    }
+
+    .statusPill {
+      font-family: $font-mono;
+      font-size: 0.65rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 3px;
+      background-color: rgba(255, 255, 255, 0.06);
+      color: $color-steel;
+    }
+  }
+}
+
+// Resume Paper
+.resumePaper {
+  background-color: #151821;
+  border: 1px solid $color-border-medium;
+  border-radius: 6px;
+  padding: 1.25rem;
+
+  .paperHeader {
+    border-bottom: 1px solid $color-border-subtle;
+    padding-bottom: 0.6rem;
+    margin-bottom: 0.75rem;
+
+    h5 {
+      font-size: 1rem;
+      color: $color-white;
+    }
+
+    .eduNote {
+      font-family: $font-mono;
+      font-size: 0.72rem;
+      color: $color-crimson;
+    }
+  }
+
+  .paperSection {
+    h6 {
+      font-family: $font-mono;
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      color: $color-muted;
+      margin-bottom: 0.4rem;
+    }
+
+    ul {
+      list-style-type: disc;
+      padding-left: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+
+      li {
+        font-size: 0.82rem;
+        color: $color-steel;
+      }
+    }
+  }
+
+  .paperFooter {
+    margin-top: 1rem;
+    padding-top: 0.5rem;
+    border-top: 1px dashed $color-border-subtle;
+    font-family: $font-mono;
+    font-size: 0.65rem;
+    color: $color-muted;
+  }
+}
+
+// Tracker Metrics
+.trackerMetrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.trackerCard {
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid $color-border-subtle;
+  border-radius: 6px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  .trackerVal {
+    font-family: $font-display;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: $color-cyan;
+    margin-bottom: 0.3rem;
+  }
+
+  .trackerLbl {
+    font-family: $font-mono;
+    font-size: 0.7rem;
+    color: $color-steel;
+    text-transform: uppercase;
+  }
+}
+
+// ==========================================
+// Explorations & Academic Cards
+// ==========================================
+.explorationsSection {
+  margin-top: 2rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid $color-border-subtle;
+}
+
+.explorationsHeader {
+  margin-bottom: 1.75rem;
+
+  .sectionMono {
+    font-family: $font-mono;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    color: $color-crimson;
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+
+  h4 {
+    font-size: 1.6rem;
+    color: $color-white;
+  }
+}
+
+.explorationsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.75rem;
+
+  @include tablet {
+    grid-template-columns: 1fr;
+  }
+}
+
+.explorationCard {
+  background-color: $color-carbon;
+  border: 1px solid $color-border-subtle;
+  border-radius: 10px;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  transition: all $transition-fast;
+
+  &:hover {
+    border-color: $color-border-medium;
+    transform: translateY(-2px);
+  }
+
+  .expCardHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+
+  .expDate {
+    font-family: $font-mono;
+    font-size: 0.7rem;
+    color: $color-muted;
+  }
+
+  h5 {
+    font-size: 1.25rem;
+    color: $color-white;
+    margin-bottom: 0.35rem;
+  }
+
+  .expTagline {
+    font-family: $font-mono;
+    font-size: 0.78rem;
+    color: $color-steel;
+    margin-bottom: 0.85rem;
+  }
+
+  .expDesc {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: $color-steel;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+  }
+
+  .expTech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+
+    span {
+      font-family: $font-mono;
+      font-size: 0.72rem;
+      background-color: rgba(255, 255, 255, 0.04);
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+      color: $color-steel;
+    }
+  }
+}

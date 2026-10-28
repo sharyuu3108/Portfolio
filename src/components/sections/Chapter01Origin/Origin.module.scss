@@ -1,0 +1,258 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.originSection {
+  padding: $section-spacing-desktop 0;
+  position: relative;
+  z-index: 1;
+
+  @include tablet {
+    padding: $section-spacing-tablet 0;
+  }
+}
+
+.container {
+  @include container;
+}
+
+.narrativeGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+
+  @include laptop {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.storyCard, .dimensionCard {
+  background-color: $color-carbon;
+  border: 1px solid $color-border-subtle;
+  border-radius: 12px;
+  padding: 2.25rem;
+  display: flex;
+  flex-direction: column;
+  transition: border-color $transition-fast;
+
+  &:hover {
+    border-color: $color-border-medium;
+  }
+
+  @include mobile {
+    padding: 1.5rem;
+  }
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid $color-border-subtle;
+  margin-bottom: 1.5rem;
+}
+
+.monoLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: $color-crimson;
+}
+
+.cgpaBadge {
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: $color-cyan;
+  background-color: rgba(53, 215, 242, 0.08);
+  border: 1px solid rgba(53, 215, 242, 0.25);
+  padding: 0.25rem 0.65rem;
+  border-radius: 4px;
+}
+
+.counter {
+  font-family: $font-mono;
+  font-size: 0.72rem;
+  color: $color-muted;
+}
+
+.storyBody {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  margin-bottom: 2rem;
+  flex-grow: 1;
+
+  p {
+    font-size: 0.98rem;
+    line-height: 1.7;
+    color: $color-steel;
+  }
+
+  .leadPara {
+    font-size: 1.05rem;
+    color: $color-white;
+    line-height: 1.65;
+  }
+}
+
+.compactChipsRow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid $color-border-subtle;
+}
+
+.compactChip {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: $font-mono;
+  font-size: 0.8rem;
+  color: $color-white;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 0.45rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+
+  .chipDot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: $color-crimson;
+    flex-shrink: 0;
+  }
+}
+
+// Dimension Card & Tabs
+.tabNav {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 1.75rem;
+  background-color: rgba(0, 0, 0, 0.35);
+  padding: 0.35rem;
+  border-radius: 8px;
+  border: 1px solid $color-border-subtle;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.tabBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.65rem 0.5rem;
+  border-radius: 6px;
+  font-family: $font-sans;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: $color-steel;
+  transition: all $transition-fast;
+
+  &:hover {
+    color: $color-white;
+  }
+
+  &.active {
+    color: $color-white;
+    background-color: $color-surface-elevated;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+
+    &.crimson {
+      border-bottom: 2px solid $color-crimson;
+    }
+    &.cyan {
+      border-bottom: 2px solid $color-cyan;
+    }
+    &.violet {
+      border-bottom: 2px solid $color-violet;
+    }
+  }
+}
+
+.tabPanel {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.panelHead {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.roleTag {
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+
+  &.crimson {
+    color: $color-crimson;
+  }
+  &.cyan {
+    color: $color-cyan;
+  }
+  &.violet {
+    color: $color-violet;
+  }
+}
+
+.dimTitle {
+  font-size: 1.65rem;
+  letter-spacing: -0.02em;
+  color: $color-white;
+}
+
+.dimDescription {
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: $color-steel;
+  margin-bottom: 1.75rem;
+}
+
+.focusList {
+  background-color: rgba(0, 0, 0, 0.25);
+  border: 1px solid $color-border-subtle;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.focusPills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.focusPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  font-family: $font-mono;
+  color: $color-white;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+
+  .bulletDot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: $color-cyan;
+    flex-shrink: 0;
+  }
+}

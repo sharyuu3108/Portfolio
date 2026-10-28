@@ -1,0 +1,13 @@
+@import '@/styles/variables.scss';
+
+.scrambleText {
+  display: inline-block;
+  cursor: default;
+  transition: color $transition-fast, text-shadow $transition-fast;
+
+  &.isScrambling {
+    color: $color-cyan !important;
+    text-shadow: 0 0 10px rgba(53, 215, 242, 0.5), 0 0 20px rgba(53, 215, 242, 0.2);
+    letter-spacing: 0.04em;
+  }
+}

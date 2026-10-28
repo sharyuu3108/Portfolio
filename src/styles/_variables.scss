@@ -1,0 +1,54 @@
+// Design Tokens: THE HUMAN × MACHINE
+
+// Color System
+$color-obsidian: #08090D;
+$color-carbon: #12141A;
+$color-carbon-light: #181B22;
+$color-surface-elevated: #1E222B;
+$color-surface-card: rgba(18, 20, 26, 0.85);
+
+$color-border-subtle: rgba(255, 255, 255, 0.07);
+$color-border-medium: rgba(255, 255, 255, 0.14);
+$color-border-active: rgba(240, 68, 82, 0.4);
+
+$color-crimson: #F04452;
+$color-crimson-hover: #ff5a68;
+$color-crimson-dim: rgba(240, 68, 82, 0.12);
+$color-crimson-glow: rgba(240, 68, 82, 0.35);
+
+$color-cyan: #35D7F2;
+$color-cyan-dim: rgba(53, 215, 242, 0.12);
+$color-cyan-glow: rgba(53, 215, 242, 0.3);
+
+$color-violet: #8D72FF;
+$color-violet-dim: rgba(141, 114, 255, 0.12);
+$color-violet-glow: rgba(141, 114, 255, 0.3);
+
+$color-white: #F4F1EC;
+$color-steel: #9295A2;
+$color-muted: #606473;
+$color-dark-muted: #323642;
+
+// Typography Tokens
+$font-sans: var(--font-dm-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+$font-display: var(--font-space-grotesk), "Segoe UI", sans-serif;
+$font-serif: var(--font-instrument-serif), Georgia, serif;
+$font-mono: var(--font-ibm-plex-mono), "SF Mono", Menlo, Consolas, monospace;
+
+// Breakpoints
+$bp-mobile: 480px;
+$bp-tablet: 768px;
+$bp-laptop: 1024px;
+$bp-desktop: 1280px;
+$bp-wide: 1440px;
+
+// Layout & Spacing
+$container-max-width: 1240px;
+$section-spacing-desktop: 140px;
+$section-spacing-tablet: 100px;
+$section-spacing-mobile: 72px;
+
+// Transitions & Timing
+$transition-fast: 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+$transition-base: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+$transition-slow: 0.5s cubic-bezier(0.16, 1, 0.3, 1);

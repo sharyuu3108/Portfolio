@@ -1,0 +1,309 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.imaginationSection {
+  padding: $section-spacing-desktop 0;
+  position: relative;
+  z-index: 1;
+
+  @include tablet {
+    padding: $section-spacing-tablet 0;
+  }
+}
+
+.container {
+  @include container;
+}
+
+// Leadership Banner
+.leadershipBanner {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 3.5rem;
+  align-items: center;
+  background-color: $color-carbon;
+  border: 1px solid $color-border-subtle;
+  border-radius: 14px;
+  padding: 3rem;
+  margin-bottom: 4rem;
+
+  @include laptop {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding: 2rem;
+  }
+}
+
+.leaderImageWrap {
+  display: flex;
+  justify-content: center;
+}
+
+.frameDecoration {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid $color-border-medium;
+  max-width: 360px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+
+  .leaderPhoto {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.95) contrast(1.05);
+    transition: transform $transition-slow;
+  }
+
+  &:hover .leaderPhoto {
+    transform: scale(1.02);
+  }
+
+  .photoOverlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(8, 9, 13, 0.75) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .photoTag {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+    background-color: rgba(18, 20, 26, 0.85);
+    backdrop-filter: blur(8px);
+    border: 1px solid $color-border-subtle;
+    padding: 0.4rem 0.75rem;
+    border-radius: 4px;
+    font-family: $font-mono;
+    font-size: 0.72rem;
+    color: $color-violet;
+    text-align: center;
+    letter-spacing: 0.08em;
+  }
+}
+
+.leaderTextCol {
+  display: flex;
+  flex-direction: column;
+
+  .leaderTitle {
+    font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+    letter-spacing: -0.02em;
+    color: $color-white;
+    margin: 0.85rem 0 1rem;
+    line-height: 1.2;
+  }
+
+  .leaderPara {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: $color-steel;
+    margin-bottom: 2rem;
+
+    strong {
+      color: $color-white;
+    }
+  }
+}
+
+.impactGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.impactCard {
+  background-color: rgba(0, 0, 0, 0.25);
+  border: 1px solid $color-border-subtle;
+  border-radius: 8px;
+  padding: 1.25rem;
+  transition: border-color $transition-fast;
+
+  &:hover {
+    border-color: $color-border-medium;
+  }
+
+  .impactHead {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.4rem;
+
+    strong {
+      font-size: 0.98rem;
+      color: $color-white;
+    }
+
+    .impactIcon {
+      color: $color-violet;
+    }
+  }
+
+  .statPill {
+    display: inline-block;
+    font-family: $font-mono;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: $color-violet;
+    background: rgba(141, 114, 255, 0.1);
+    border: 1px solid rgba(141, 114, 255, 0.25);
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    margin-bottom: 0.4rem;
+  }
+
+  p {
+    font-size: 0.88rem;
+    line-height: 1.55;
+    color: $color-steel;
+  }
+}
+
+// Gallery Section
+.gallerySection {
+  margin-top: 1rem;
+}
+
+.galleryHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid $color-border-subtle;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+
+  .galleryMono {
+    font-family: $font-mono;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    color: $color-violet;
+    display: block;
+    margin-bottom: 0.35rem;
+  }
+
+  .galleryTitle {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    color: $color-white;
+  }
+
+  .curatedNote {
+    font-family: $font-mono;
+    font-size: 0.75rem;
+    color: $color-muted;
+  }
+}
+
+.galleryGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+
+  @include tablet {
+    grid-template-columns: 1fr;
+  }
+}
+
+.galleryCard {
+  background-color: $color-carbon;
+  border: 1px solid $color-border-subtle;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all $transition-fast;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $color-border-medium;
+    transform: translateY(-3px);
+  }
+
+  &.selected {
+    border-color: $color-violet;
+    box-shadow: 0 10px 30px rgba(141, 114, 255, 0.15);
+  }
+}
+
+.cardImageHolder {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background-color: $color-obsidian;
+
+  .cardImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform $transition-slow;
+  }
+
+  &:hover .cardImg {
+    transform: scale(1.03);
+  }
+
+  .cardOverlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(18, 20, 26, 0.85) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .categoryBadge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    font-family: $font-mono;
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    color: $color-white;
+    background-color: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+  }
+}
+
+.cardContent {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  .itemTitle {
+    font-size: 1.25rem;
+    color: $color-white;
+    margin-bottom: 0.25rem;
+  }
+
+  .contextText {
+    font-family: $font-mono;
+    font-size: 0.72rem;
+    color: $color-violet;
+    margin-bottom: 0.85rem;
+  }
+
+  .itemDesc {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: $color-steel;
+    margin-bottom: 1.25rem;
+    flex-grow: 1;
+  }
+
+  .tagRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .pillTag {
+    @include tech-tag;
+  }
+}

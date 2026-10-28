@@ -1,0 +1,95 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.header {
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  max-width: 820px;
+
+  &.center {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+
+    .chapterBadge {
+      justify-content: center;
+    }
+
+    .description {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  &.left {
+    text-align: left;
+  }
+}
+
+.chapterBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: $font-mono;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: $color-crimson;
+  margin-bottom: 0.85rem;
+
+  .chapterNum {
+    font-weight: 600;
+    cursor: default;
+    transition: color $transition-fast, text-shadow $transition-fast;
+
+    &.isScrambling {
+      color: $color-cyan !important;
+      text-shadow: 0 0 10px rgba(53, 215, 242, 0.6);
+    }
+  }
+
+  .divider {
+    color: rgba(255, 255, 255, 0.2);
+  }
+
+  .chapterName {
+    color: $color-steel;
+    letter-spacing: 0.16em;
+    cursor: default;
+    transition: color $transition-fast, text-shadow $transition-fast;
+
+    &.isScrambling {
+      color: $color-cyan !important;
+      text-shadow: 0 0 10px rgba(53, 215, 242, 0.6);
+    }
+  }
+}
+
+.title {
+  font-size: clamp(1.55rem, 2.6vw, 2.25rem);
+  font-weight: 700;
+  line-height: 1.18;
+  color: $color-white;
+  letter-spacing: -0.025em;
+  margin-bottom: 0.75rem;
+
+  .highlight {
+    color: $color-crimson;
+  }
+}
+
+.serifSubtitle {
+  font-family: $font-serif;
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+  color: #ded9d0;
+  font-style: italic;
+  margin-top: -0.25rem;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
+}
+
+.description {
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  line-height: 1.65;
+  color: $color-steel;
+  max-width: 680px;
+}

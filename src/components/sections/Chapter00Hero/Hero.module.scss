@@ -1,0 +1,289 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.heroSection {
+  min-height: 100vh;
+  padding: 8.5rem 0 5rem;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+
+  @include tablet {
+    padding: 7rem 0 3.5rem;
+  }
+}
+
+.container {
+  @include container;
+}
+
+.statusRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.openToWorkBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  background-color: rgba(53, 215, 242, 0.08);
+  border: 1px solid rgba(53, 215, 242, 0.3);
+  padding: 0.4rem 0.9rem;
+  border-radius: 9999px;
+
+  .pulse {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: $color-cyan;
+    box-shadow: 0 0 8px $color-cyan-glow;
+  }
+
+  .statusLabel {
+    color: $color-cyan;
+    font-weight: 600;
+  }
+
+  .statusDetail {
+    color: $color-white;
+  }
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: 1.25fr 0.95fr;
+  gap: 4rem;
+  align-items: center;
+
+  @include tablet {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+// Left Column
+.copyCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.taglineBlock {
+  margin-bottom: 1.5rem;
+}
+
+.monoCoord {
+  display: inline-block;
+  font-family: $font-mono;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  color: $color-crimson;
+  margin-bottom: 0.75rem;
+}
+
+.displayTitle {
+  font-size: clamp(2.4rem, 5.5vw, 4.4rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  margin-bottom: 0.5rem;
+
+  .nameFirst {
+    color: $color-white;
+  }
+
+  .nameLast {
+    background: linear-gradient(135deg, $color-white 40%, $color-steel 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+.editorialSubhead {
+  font-family: $font-serif;
+  font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+  color: #ded9d0;
+  letter-spacing: -0.01em;
+
+  em {
+    font-style: italic;
+  }
+}
+
+.introParagraph {
+  font-size: clamp(1.05rem, 1.8vw, 1.2rem);
+  line-height: 1.7;
+  color: $color-steel;
+  margin-bottom: 2.25rem;
+  max-width: 600px;
+
+  .nameHighlight {
+    color: $color-white;
+    font-weight: 600;
+  }
+}
+
+.actionRow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.metricsBar {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid $color-border-subtle;
+  flex-wrap: wrap;
+}
+
+.metricItem {
+  display: flex;
+  flex-direction: column;
+
+  .metricValue {
+    font-family: $font-display;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: $color-white;
+    line-height: 1.1;
+  }
+
+  .metricLabel {
+    font-family: $font-mono;
+    font-size: 0.72rem;
+    color: $color-muted;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+}
+
+.metricDivider {
+  width: 1px;
+  height: 32px;
+  background-color: $color-border-subtle;
+}
+
+// Right Column: Minimalist Clean & Spacious Editorial Portrait
+.portraitCol {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem 0;
+}
+
+.portraitWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ambientGlow {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 115%;
+  height: 115%;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba($color-crimson, 0.16) 0%,
+    rgba($color-crimson, 0.04) 45%,
+    transparent 72%
+  );
+  filter: blur(48px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.portraitFrame {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  aspect-ratio: 4 / 5.2;
+  border-radius: 16px;
+  overflow: hidden;
+  background-color: $color-carbon;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 24px 60px -15px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(255, 255, 255, 0.04),
+    0 0 35px -10px rgba($color-crimson, 0.12);
+  transition: transform $transition-base, border-color $transition-base, box-shadow $transition-base;
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: rgba($color-crimson, 0.35);
+    box-shadow:
+      0 32px 75px -15px rgba(0, 0, 0, 0.8),
+      0 0 0 1px rgba($color-crimson, 0.25),
+      0 0 45px -10px rgba($color-crimson, 0.22);
+
+    .portraitImage {
+      transform: scale(1.03);
+    }
+  }
+}
+
+.portraitImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  filter: brightness(0.98) contrast(1.05) saturate(1.03);
+  transition: transform $transition-slow, filter $transition-slow;
+  display: block;
+}
+
+.portraitCaption {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.25rem;
+  padding: 0 0.5rem;
+
+  .captionTag {
+    font-family: $font-mono;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    color: rgba($color-steel, 0.8);
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: $color-crimson;
+      box-shadow: 0 0 8px rgba($color-crimson, 0.8);
+    }
+  }
+
+  .captionLoc {
+    font-family: $font-mono;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    color: $color-muted;
+    text-transform: uppercase;
+  }
+}

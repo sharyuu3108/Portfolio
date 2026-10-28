@@ -1,0 +1,197 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+// Top Global Progress Line
+.topProgressBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2.5px;
+  background: rgba(255, 255, 255, 0.05);
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.topProgressFill {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, $color-crimson 0%, $color-cyan 55%, $color-violet 100%);
+  transform-origin: 0% 50%;
+  transition: transform 0.08s linear;
+  box-shadow: 0 0 10px rgba(240, 68, 82, 0.6);
+}
+
+// Side Journey Rail (Desktop / Tablet)
+.journeyRail {
+  position: fixed;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include tablet {
+    display: none;
+  }
+}
+
+.railTrack {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  padding: 1rem 0.5rem;
+  background: rgba(14, 16, 21, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 999px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+
+  // Background track line
+  &::before {
+    content: '';
+    position: absolute;
+    top: 1.25rem;
+    bottom: 1.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    background: rgba(255, 255, 255, 0.08);
+    pointer-events: none;
+  }
+}
+
+.railProgressLine {
+  position: absolute;
+  top: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  background: linear-gradient(to bottom, $color-crimson, $color-cyan);
+  box-shadow: 0 0 8px rgba(240, 68, 82, 0.5);
+  pointer-events: none;
+  transition: height 0.12s ease-out;
+  border-radius: 2px;
+}
+
+// Node Buttons
+.nodeBtn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 2;
+
+  &:hover .nodeTooltip {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+  }
+}
+
+.nodeBead {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: $color-muted;
+  border: 2px solid $color-carbon;
+  transition: all $transition-base;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .innerDot {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    opacity: 0;
+    transition: opacity $transition-fast;
+  }
+}
+
+// Active State
+.nodeBtn.active {
+  .nodeBead {
+    background: $color-crimson;
+    border-color: rgba(240, 68, 82, 0.35);
+    box-shadow: 0 0 12px rgba(240, 68, 82, 0.7);
+    transform: scale(1.35);
+
+    .innerDot {
+      opacity: 1;
+      background: $color-white;
+    }
+  }
+}
+
+// Tooltip on Hover / Peek
+.nodeTooltip {
+  position: absolute;
+  right: 2.25rem;
+  top: 50%;
+  transform: translateY(-50%) translateX(6px);
+  background: rgba(18, 20, 26, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.35rem 0.65rem;
+  border-radius: 6px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: all $transition-fast;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: -4px;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    width: 8px;
+    height: 8px;
+    background: rgba(18, 20, 26, 0.95);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+.nodeNum {
+  font-family: $font-mono;
+  font-size: 0.7rem;
+  color: $color-crimson;
+  font-weight: 600;
+}
+
+.nodeName {
+  font-family: $font-sans;
+  font-size: 0.75rem;
+  color: $color-white;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+// Reduced Motion
+@media (prefers-reduced-motion: reduce) {
+  .topProgressFill,
+  .railProgressLine,
+  .nodeBead,
+  .nodeTooltip {
+    transition: none !important;
+  }
+}
